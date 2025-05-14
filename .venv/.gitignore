@@ -1,0 +1,9 @@
+# Ignorar o arquivo config.json (contém o token sensível)
+config.json
+DISCORD_TOKEN
+# Ignorar pastas ou arquivos adicionais (opcional)
+__pycache__/
+*.pyc
+
+# Ignorar arquivos do ambiente virtual (se estiver usando)
+venv/
