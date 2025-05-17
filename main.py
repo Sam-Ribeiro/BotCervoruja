@@ -15,7 +15,6 @@ md6msg_ids = defaultdict(set)
 md10msg_ids = defaultdict(set)
 md12msg_ids = defaultdict(set)
 resultadoMsg_ids = defaultdict(set)
-
 usado = 0;
 musado = 0;
 resultado_id = None
@@ -75,21 +74,43 @@ async def on_message(message):
             title="Comandos",
             color=COR,
             description="- ?dados = Uso padrão para jogadores, \n"
-                        "  disponibiliza 3 mensagens aonde o jogador\n"
-                        "  pode interagir reagindo para rodar dados\n"
-                        "  escolhendo a quantidade e o tipo de dado \n"
-                        "  a ser rolado, recebendo então o resultado\n\n"
+                        "   disponibiliza 3 mensagens aonde o jogador\n"
+                        "   pode interagir reagindo para rodar dados\n"
+                        "   escolhendo a quantidade e o tipo de dado \n"
+                        "   a ser rolado, recebendo então o resultado\n\n"
                         "- ?mestre = Uso do mestre, mostra uma mensagem\n"
-                        "  aonde o mestre pode interagir para controlar\n"
-                        "  conflito. pode alterar a quantidade de dados\n"
-                        "  assim como rodar eles. tambem pode usar os\n"
-                        "  Sucessos, Aptidões e Pressões obtidos\n\n"
-                        "- ?help = Lista os comandos do bot",)
+                        "   aonde o mestre pode interagir para controlar\n"
+                        "   conflito. pode alterar a quantidade de dados\n"
+                        "   assim como rodar eles. tambem pode usar os\n"
+                        "   Sucessos, Aptidões e Pressões obtidos\n\n"
+                        "- ?help = Lista os comandos do bot\n\n"
+                        "- ?clear = Apaga os IDs das mensagens do chat em\n"
+                        "   que foi usado, para limpar espaço na memória\n",)
 
         await message.channel.send(embed=embedhelp)
 
     if message.content == '?test':
         await message.channel.send('Bot Funcionando')
+
+    if message.content == '?reset':
+        print(message.author.name)
+        if message.author.name == 'mas_sam':
+            await message.channel.send('Excluindo IDs das mensagens...')
+            d6msg_ids.clear()
+            d10msg_ids.clear()
+            d12msg_ids.clear()
+            resultadoMsg_ids.clear()
+            await message.channel.send("Todos os IDs foram resetados!")
+        else:
+            await message.channel.send("Você não tem permissão para isso")
+
+    if message.content == '?clear':
+        await message.channel.send('Excluindo IDs das mensagens desse canal...')
+        guild_id = message.guild.id
+        d6msg_ids[guild_id].clear()
+        d10msg_ids[guild_id].clear()
+        d12msg_ids[guild_id].clear()
+        await message.channel.send("Todos os IDs desse canal foram resetados!")
 
     if message.content == '?mestre':
         global musado
@@ -131,7 +152,7 @@ async def on_message(message):
 
     if message.content == '?dados':
         global usado
-        usado += 1
+        usado +=1
         print(f"?dados foi usado {usado} vezes após a inicialização")
 
         embed1 = discord.Embed(
@@ -174,7 +195,6 @@ async def on_message(message):
             await d6msg.add_reaction(emoji)
             await d10msg.add_reaction(emoji)
             await d12msg.add_reaction(emoji)
-
 
 @client.event
 async def on_reaction_add(reaction, user):
@@ -304,8 +324,6 @@ async def on_reaction_add(reaction, user):
 
                 await reaction.message.edit(embed=embed_editada)
                 await reaction.message.remove_reaction(reaction.emoji, user)
-
-
 
     else: # emoji ta no emoji de dados
         qtd_dados = emoji_map[reaction.emoji]
