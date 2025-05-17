@@ -5,7 +5,7 @@ Bot de dados usado para rodar e interpretar os resultados dos dados do sistema d
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
-### Servidor
+### Servidor / Virtual Machine
 
 ![GoogleCloud](https://img.shields.io/badge/Google%20Cloud-4285F4?&style=plastic&logo=Google%20Cloud&logoColor=white)
 
