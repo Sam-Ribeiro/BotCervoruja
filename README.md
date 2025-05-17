@@ -20,3 +20,18 @@ Bot de dados usado para rodar e interpretar os resultados dos dados do sistema d
 🤖 Adicione o bot a um servidor do discord e teste você mesmo! comece com ?help
 
 👉 [Convidar](https://discord.com/oauth2/authorize?client_id=1326207652727881829&permissions=549755841600&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.com%2Foauth2%2Fauthorize%3Fclient_id%3D1326207652727881829&integration_type=0&scope=messages.read+bot)
+
+## 📷​ Imagens demonstrativas
+### Comandos
+
+?help
+
+![comando ?help](assets/image_help.png)
+
+?dados
+
+![comando ?dados](assets/image_dados.png)
+
+?mestre
+
+![comando ?mestre](assets/image_mestre.png)
